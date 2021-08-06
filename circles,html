@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Circles</title>
+</head>
+<body>
+
+<style>
+html, body{
+	height: 100%;
+	overflow: hidden;
+	background: #000;
+}
+.circle{
+	width: 100px;
+	height: 100px;
+	background: #ccc;
+	border-radius: 50%;
+	background-image: radial-gradient(circle at top, lightblue, black);
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    transition: all 1s ease-in-out;
+}
+</style>
+<script>
+(function(d){
+
+let { log } = console
+
+
+let div,
+divs = [],
+balls = 5, // +1
+balls_max_size = 200 // px
+for (let i = balls; i >= 0; i--) {
+	div = d.createElement('div')
+	div.className = 'circle'
+	// div.style.left = rand(95)+'%'
+	// div.style.top = rand(95)+'%'
+	// let size = rand(balls_max_size)
+	// div.style.width = size + 'px'
+	// div.style.height = size + 'px'
+	d.body.appendChild(div)
+	divs.push(div)
+}
+window.moveCircles = function() {
+	for (let i = balls; i >= 0; i--) {
+		divs[i].style.left = rand(95)+'%'
+		divs[i].style.top = rand(95)+'%'
+		let size = rand(balls_max_size)
+		divs[i].style.width = size + 'px'
+		divs[i].style.height = size + 'px'
+		divs[i].style.zIndex = size
+	}
+}
+log(divs)
+
+setInterval(moveCircles, 1700)
+
+
+function rand(max) {
+  return Math.floor(Math.random() * max);
+}
+
+}(document))
+</script>
+
+</body>
+</html>
