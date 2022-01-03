@@ -1,0 +1,18 @@
+:root{
+	--bgColor:  #1d324d;
+	--textColor: #eaeaea;
+}
+
+body{
+	background: var(--bgColor);
+	color: var(--textColor);
+}
+
+.list-num{
+    font-size: 28px;
+}
+
+.font-weight-bold{
+	font-weight: bold;
+	font-size: 1.2em;
+}

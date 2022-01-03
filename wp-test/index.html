@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="hljs/styles/atom-one-dark-reasonable.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<h2 class="pb-2 my-5 border-bottom">WP test task</h2>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 font-weight-bold">#</div>
+			<div class="col-sm-5 font-weight-bold">Question</div>
+			<div class="col-sm-6 font-weight-bold">Answer</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">1.</div>
+			<div class="col-sm-5">
+				Как в PHP обработать данные, поступившие от клиента, преобразовав все html символы с спецсимволы, убрав пробелы с начала и конца строки, экранировав все спецсимволы?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">2.</div>
+			<div class="col-sm-5">
+				Что выведет следующий код и почему:
+				<pre>
+					<code>
+	$a = 1;
+	function someFunc1($a) {
+		$a++;
+	}
+	function someFunc2(&$a) {
+		$a++;
+	}
+	someFunc1($a);
+	someFunc2($a);
+	echo $a;
+					</code>
+				</pre>
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">3.</div>
+			<div class="col-sm-5">
+				Что выведет следующий код и почему:
+				<pre>
+					<code>
+	class A {
+		public $prop = 28;
+	}
+	function someFunc1($a) {
+		$a->prop++;
+	}
+	$a = new A();
+	someFunc1($a);
+	someFunc1(clone($a));
+	echo $a->prop;
+					</code>
+				</pre>
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">4.</div>
+			<div class="col-sm-5">
+				Чем отличается конструктор от обычного метода?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">5.</div>
+			<div class="col-sm-5">
+				Чем отличается процедурный подход к программированию от объектно ориентированного? Чем отличается объект от класса?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">6.</div>
+			<div class="col-sm-5">
+				Напишите код, который из произвольной строки оставит только набор чисел (числа могут быть дробными), если их будет несколько в строке - они будут разделены разделителем "/"
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">7.</div>
+			<div class="col-sm-5">
+				С какими паттернами программирования вы работали?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">8.</div>
+			<div class="col-sm-5">
+				Работали ли в с MVC для php? Если да - опишите в кратце в чем по вашему заключается суть такого подхода.
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">9.</div>
+			<div class="col-sm-5">
+				Какие проблемы могут быть с этим контроллером? http://pastebin.com/Gx6gvLkE
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">10.</div>
+			<div class="col-sm-5">
+				Написать функцию, которая получает на вход строку вида: <br>
+				{Я помню|Не помню|Какое} чудное {мгновенье|затменье|творенье} <br>
+				И возвращает случайное слово из фигурных скобок
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">11.</div>
+			<div class="col-sm-5">
+				Есть класс, который умножает 2 числа. Как сделать так, чтоб он умножал модули чисел, при этом не изменяя код класса, интерфейса и строки с выводом результата. Т.е. вызов echo $multiplier->multiply(2, -5); должен вывести 10. http://pastebin.com/ZQDn5gAC
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">12.</div>
+			<div class="col-sm-5">
+				Есть 2 таблицы: t1 {t1_id, t1_name}, t2 {t2_id, t1_id, t2_name}. Предоставьте 3 варианта запросов выборки данных из обоих таблиц, для которых t1.t1_id = t2.t1_id, и 3 варианта запросов выборки данных для которых t1.t1_id != t2.t1_id
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">13.</div>
+			<div class="col-sm-5">
+				Предложите структуру базы данных для хранения книг, у которых есть названия, цена, описания, автор (авторы), категория (категории)
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">14.</div>
+			<div class="col-sm-5">
+				Для чего используют индексацию в mysql? Какие минусы индексации? Когда ее не стоит использовать?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">15.</div>
+			<div class="col-sm-5">
+				Какие методы оптимизации баз данных вы знаете (использовали)?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">16.</div>
+			<div class="col-sm-5">
+				Приведите пример mysql запроса который вернет данные из таблицы с наибольшим индексом, не используя при это MAX()
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">17.</div>
+			<div class="col-sm-5">
+				Как избежать дублирования данных в текстовом поле при вставке в mysql таблицу?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">18.</div>
+			<div class="col-sm-5">
+				Как создать объект в javascript? Как создать методы для объекта?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">19.</div>
+			<div class="col-sm-5">
+				Как на javascript создать на страничке html форму, с одним текстовым полем и одной кнопкой submit?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">20.</div>
+			<div class="col-sm-5">
+				Что выведет код и почему:
+var a = {prop: 1};
+function func1(a) {
+a.prop++;
+}
+func1(a);
+console.log(a.prop);
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">21.</div>
+			<div class="col-sm-5">
+				Что выведет код и почему:
+var a = 1;
+console.log(a++ + ++a);
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">22.</div>
+			<div class="col-sm-5">
+				Как в javascript рапарсить json?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">23.</div>
+			<div class="col-sm-5">
+				Приведите пример кода, который преобразует число (может быть как числового типа, так и строка) в строку, оставляя после запятой 2 знака, заменяя разделитель "." на ",", вставляет пробел после каждых 3-х чисел до запятой (тысяча, миллион, ...)
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">24.</div>
+			<div class="col-sm-5">
+				Объяснить что такое MVC (HMVC) / MVVM. Есть ли разница между MVC и MVVM? Если да, то в чём?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">25.</div>
+			<div class="col-sm-5">
+				Зачем нужны интерфейсы классов?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">26.</div>
+			<div class="col-sm-5">
+				 Что такое декоратор?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">27.</div>
+			<div class="col-sm-5">
+				 Что такое Dependency Injection, в чём его суть? Плюсы и минусы
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">29.</div>
+			<div class="col-sm-5">
+				Что такое DRY?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">30.</div>
+			<div class="col-sm-5">
+				Что такое PSR?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">31.</div>
+			<div class="col-sm-5">
+				Что такое DTO?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">32.</div>
+			<div class="col-sm-5">
+				 Сколько примерно времени у Вас займет написание простой html формы (5 полей), которая отправляет данные используя ajax на сервер, на php данные обрабатываются и вставляются в базу, ответ от сервера обрабатывает javascript?
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">33.</div>
+			<div class="col-sm-5">
+				Есть ли опыт работы с WordPress. <br>
+				Если есть, распишите подробно.
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">34.</div>
+			<div class="col-sm-5">
+				Приведите список проектов, над которыми вы работали, и причины по которым с них ушли.
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+		<div class="row mb-5">
+			<div class="col-sm-1 border-bottom list-num">35.</div>
+			<div class="col-sm-5">
+				Пришлите пару примеров своего кода
+			</div>
+			<div class="col-sm-6">
+
+			</div>
+		</div>
+
+	</div>
+
+<script src="hljs/highlight.min.js"></script>
+<script>
+document.querySelectorAll('pre code').forEach((el) => {
+	hljs.highlightElement(el);
+});
+</script>
+</body>
+</html>
