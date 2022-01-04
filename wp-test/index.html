@@ -180,6 +180,16 @@ class BooksController
 			</div>
 			<div class="col-sm-6">
 				Так как это контроллер то используется паттерн MVC. Это означает, что подключение и запрос к базе данных должен быть скрыт в методах модели(в данном случае <b>Book()</b>). А верстка должна находится в файлах представлений, а в контроллере только вызываться нужный файл и передаваться в него данные.
+				<pre>
+					<code>
+    public function getAuthorBooksAction($authorName)
+    {
+            $books = Book::where('author_name', $authorName)->get();
+
+            return view('books.index', ['books => $books']);
+    }
+					</code>
+				</pre>
 			</div>
 		</div>
 
@@ -199,6 +209,31 @@ class BooksController
 			<div class="col-sm-1 border-bottom list-num">11.</div>
 			<div class="col-sm-5">
 				Есть класс, который умножает 2 числа. Как сделать так, чтоб он умножал модули чисел, при этом не изменяя код класса, интерфейса и строки с выводом результата. Т.е. вызов echo $multiplier->multiply(2, -5); должен вывести 10. http://pastebin.com/ZQDn5gAC
+				<pre>
+					<code>
+// Не менять
+interface MultiplierInterface
+{
+    // Не менять
+    public function multiply($x, $y);   
+}
+ 
+// Не менять
+final class Multiplier implements MultiplierInterface
+{
+    // Не менять
+    public function multiply($x, $y)
+    {
+        return $x * $y;
+    }
+}
+ 
+$multiplier = new Multiplier();
+ 
+// Не менять
+echo $multiplier->multiply(2, -5);
+					</code>
+				</pre>
 			</div>
 			<div class="col-sm-6">
 
