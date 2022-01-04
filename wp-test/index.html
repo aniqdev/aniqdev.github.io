@@ -133,7 +133,8 @@
 				Singleton,
 				Посредник,
 				Observer,
-				OOP
+				OOP,
+				MVC
 			</div>
 		</div>
 
@@ -143,7 +144,11 @@
 				Работали ли в с MVC для php? Если да - опишите в кратце в чем по вашему заключается суть такого подхода.
 			</div>
 			<div class="col-sm-6">
-
+				Этот паттерн используется во всех популярных фреймворках. Я работал с ним в laravel. <br>
+				Суть заключается в разделении кода на модели, представления и контроллеры. <br>
+				Представления содержат все верстку. <br>
+				Модели отвечаю за сущности, например: посты, пользователи, комментарии и т.д. и взаимодействие с базой данных.
+				А контроллеры содержат бизнес логику приложения. Это связующее свено между моделями и представлением.
 			</div>
 		</div>
 
@@ -151,9 +156,30 @@
 			<div class="col-sm-1 border-bottom list-num">9.</div>
 			<div class="col-sm-5">
 				Какие проблемы могут быть с этим контроллером? http://pastebin.com/Gx6gvLkE
+				<pre>
+					<code>
+class BooksController
+{
+        /**
+         * @param  string $authorName
+         * @return void
+     */
+        public function getAuthorBooksAction($authorName)
+        {
+                $db = new \PDO(PDO_DSN, PDO_USER, PDO_PASSWORD);
+                $books = $db->query('SELECT * FROM books WHERE author_name = ' . $authorName)->fetchAll();
+ 
+                foreach ($books as $book) {
+                        echo '&lt;h1&gt;' . $book['name'] . '&lt;/h1&gt;';
+                        echo '&lt;p&gt;' . $book['description'] . '&lt;/p&gt;';
+                }
+        }
+}
+					</code>
+				</pre>
 			</div>
 			<div class="col-sm-6">
-
+				Так как это контроллер то используется паттерн MVC. Это означает, что подключение и запрос к базе данных должен быть скрыт в методах модели(в данном случае <b>Book()</b>). А верстка должна находится в файлах представлений, а в контроллере только вызываться нужный файл и передаваться в него данные.
 			</div>
 		</div>
 
