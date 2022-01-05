@@ -560,7 +560,16 @@ parseFloat('11321321.2132').toFixed(2).replace('.', ',').replace(/(\d)(?=(\d\d\d
 				Что такое Dependency Injection, в чём его суть? Плюсы и минусы
 			</div>
 			<div class="col-sm-6">
+				Это стиль настройки объекта, при котором поля объекта задаются внешней сущностью. Другими словами, объекты настраиваются внешними объектами <br>
+				Пример из User контроллера laravel:
+				<pre>
+					<code>
+public function update(Request $request, User $user)
+{
 
+}
+					</code>
+				</pre>
 			</div>
 		</div>
 
