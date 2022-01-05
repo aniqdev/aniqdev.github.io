@@ -112,13 +112,17 @@
 			<div class="col-sm-6">
 				<pre>
 					<code>
-	function str_get_floats($str = '')
-	{
-		$arr = preg_split('/[^\d\.?]+/', $str);
-		$arr = array_filter($arr);
-		$str = implode('/', $arr);
-		return $str;
+$str = 'f.f3 3.5f5.s';
+
+function str_get_floats($str = '')
+{
+	if (preg_match_all('/\d+(\.\d+)?/', $str,$matches)) {
+		return implode('/', $matches[0]);
 	}
+	return '';
+}
+
+echo str_get_floats($str);
 					</code>
 				</pre>
 			</div>
@@ -201,7 +205,27 @@ class BooksController
 				И возвращает случайное слово из фигурных скобок
 			</div>
 			<div class="col-sm-6">
+				<pre>
+					<code>
+$str = '{Я помню|Не помню|Какое} чудное {мгновенье|затменье|творенье}.';
 
+function do_choice($str = '')
+{
+	$line = preg_replace_callback(
+        '/{(.*)}/U',
+        function ($matches) {
+        	$choice = explode('|', $matches[1]);
+        	return $choice[array_rand($choice)];
+        },
+        $str
+    );
+    return $line;
+
+}
+
+echo do_choice($str);
+					</code>
+				</pre>
 			</div>
 		</div>
 
