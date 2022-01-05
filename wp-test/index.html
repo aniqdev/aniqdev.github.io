@@ -122,7 +122,7 @@ function str_get_floats($str = '')
 	return '';
 }
 
-echo str_get_floats($str);
+echo str_get_floats($str); // 3/3.5/5
 					</code>
 				</pre>
 			</div>
@@ -270,7 +270,46 @@ echo $multiplier->multiply(2, -5);
 				Есть 2 таблицы: t1 {t1_id, t1_name}, t2 {t2_id, t1_id, t2_name}. Предоставьте 3 варианта запросов выборки данных из обоих таблиц, для которых t1.t1_id = t2.t1_id, и 3 варианта запросов выборки данных для которых t1.t1_id != t2.t1_id
 			</div>
 			<div class="col-sm-6">
+				<pre>
+					<code>	
+-- данные из двух таблиц где t1.t1_id = t2.t1_id
+SELECT * FROM t1
+INNER JOIN t2
+ON t1.t1_id = t2.t1_id;
 
+-- данные из двух таблиц где t1.t1_id = t2.t1_id
+-- плюс данные из t1 где t1.t1_id != t2.t1_id
+SELECT * FROM t1
+LEFT JOIN t2
+ON t1.t1_id = t2.t1_id;
+
+-- данные из двух таблиц где t1.t1_id = t2.t1_id
+-- плюс данные из t2 где t1.t1_id != t2.t1_id
+SELECT * FROM t1
+RIGHT JOIN t2
+ON t1.t1_id = t2.t1_id;
+
+-- данные t1 где t1.t1_id != t2.t1_id
+-- плюс поля из t2 будут заполнены как null
+SELECT * FROM t1
+LEFT JOIN t2
+ON t1.t1_id = t2.t1_id
+WHERE t2.t2_id IS null;
+
+-- данные t2 где t1.t1_id != t2.t1_id
+-- плюс поля из t1 будут заполнены как null
+SELECT * FROM t1
+RIGHT JOIN t2
+ON t1.t1_id = t2.t1_id
+WHERE t1.t1_id IS null;
+
+-- данные t1 где t1.t1_id != t2.t1_id
+SELECT * FROM t1 WHERE NOT EXISTS (SELECT 1 FROM t2 WHERE t1.t1_id = t2.t1_id);
+
+-- данные t2 где t1.t1_id != t2.t1_id
+SELECT * FROM t2 WHERE NOT EXISTS (SELECT 1 FROM t1 WHERE t1.t1_id = t2.t1_id);
+					</code>
+				</pre>
 			</div>
 		</div>
 
@@ -280,7 +319,32 @@ echo $multiplier->multiply(2, -5);
 				Предложите структуру базы данных для хранения книг, у которых есть названия, цена, описания, автор (авторы), категория (категории)
 			</div>
 			<div class="col-sm-6">
+				Три таблицы для книг, авторов и категорий <br>
+				<code>
+				books <br>
+				-- id<br>
+				-- title<br>
+				-- price<br>
+				-- description<br><br>
 
+				authors<br>
+				-- id<br>
+				-- name<br><br>
+
+				category<br>
+				-- id<br>
+				-- name<br><br>
+				</code>
+				И две связующие таблица так как отношения многое ко многим <br>
+				<code>
+				book_author<br>
+				-- book_id<br>
+				-- author_id<br><br>
+
+				book_category<br>
+				-- book_id<br>
+				-- category_id<br>
+			</code>
 			</div>
 		</div>
 
@@ -290,7 +354,9 @@ echo $multiplier->multiply(2, -5);
 				Для чего используют индексацию в mysql? Какие минусы индексации? Когда ее не стоит использовать?
 			</div>
 			<div class="col-sm-6">
-
+				Поиск по индексированному полю происходит гораздо быстрее. <br>
+				Но минус в том что добавление и обновление данных происходит дольше так как необходимо каждый раз обновлять данные индекса. <br>
+				Индексы не стоит использовать если данные в приложении часто изменяются или добавляются. 
 			</div>
 		</div>
 
@@ -300,7 +366,15 @@ echo $multiplier->multiply(2, -5);
 				Какие методы оптимизации баз данных вы знаете (использовали)?
 			</div>
 			<div class="col-sm-6">
-
+				<ul>
+					<li>Нормализация базы данных</li>
+					<li>Добавление необходимых индексов</li>
+					<li>Удаление индексов которые не используются</li>
+					<li>Оптимизация запросов к БД</li>
+					<li>Правильно определить типы полей</li>
+					<li>Удаление лишних данных</li>
+					<li>Вертикальное разделение таблиц, если есть поля которые редко используются</li>
+				</ul>
 			</div>
 		</div>
 
@@ -310,7 +384,7 @@ echo $multiplier->multiply(2, -5);
 				Приведите пример mysql запроса который вернет данные из таблицы с наибольшим индексом, не используя при это MAX()
 			</div>
 			<div class="col-sm-6">
-
+				<code>SELECT * FROM users ORDER BY age DESC LIMIT 1</code>
 			</div>
 		</div>
 
@@ -320,7 +394,7 @@ echo $multiplier->multiply(2, -5);
 				Как избежать дублирования данных в текстовом поле при вставке в mysql таблицу?
 			</div>
 			<div class="col-sm-6">
-
+				Добавить UNIQUE INDEX к этому поля. <br> В таком случае MySQL выдаст ошибку при попытке вставить уже существующее значение.
 			</div>
 		</div>
 
@@ -330,7 +404,30 @@ echo $multiplier->multiply(2, -5);
 				Как создать объект в javascript? Как создать методы для объекта?
 			</div>
 			<div class="col-sm-6">
+				<pre>
+					<code>		
+const obj1 = {
+	method: () => {}
+};
 
+const obj2 = new Object();
+obj2.method = () => {}
+
+function myConstructorFunction(param) {
+	this.value = param
+	this.method = () => {}
+}
+const obj3 = new myConstructorFunction('obj3')
+
+
+class MyClass {
+	method(){
+		return 1
+	}
+}
+const obj4 = new MyClass();
+					</code>
+				</pre>
 			</div>
 		</div>
 
@@ -340,7 +437,27 @@ echo $multiplier->multiply(2, -5);
 				Как на javascript создать на страничке html форму, с одним текстовым полем и одной кнопкой submit?
 			</div>
 			<div class="col-sm-6">
+				<div id="root"></div>
+				<pre>
+					<code>
+const form = document.createElement("form");
+form.setAttribute("method", "post");
+form.setAttribute("action", "submit.php");
 
+const input = document.createElement("input");
+input.setAttribute("type", "text");
+input.setAttribute("name", "query");
+input.setAttribute("placeholder", "Search...");
+
+const submit = document.createElement("input");
+submit.setAttribute("type", "submit");
+submit.setAttribute("value", "Search");
+
+form.appendChild(input);
+form.appendChild(submit);
+document.getElementById('form_root').appendChild(form);	
+					</code>
+				</pre>
 			</div>
 		</div>
 
@@ -348,15 +465,19 @@ echo $multiplier->multiply(2, -5);
 			<div class="col-sm-1 border-bottom list-num">20.</div>
 			<div class="col-sm-5">
 				Что выведет код и почему:
+				<pre>
+					<code>
 var a = {prop: 1};
 function func1(a) {
-a.prop++;
+	a.prop++;
 }
 func1(a);
 console.log(a.prop);
+					</code>
+				</pre>
 			</div>
 			<div class="col-sm-6">
-
+				Выведет 2. Так как объекты передаются внутрь функции по ссылке.
 			</div>
 		</div>
 
@@ -364,11 +485,18 @@ console.log(a.prop);
 			<div class="col-sm-1 border-bottom list-num">21.</div>
 			<div class="col-sm-5">
 				Что выведет код и почему:
+				<pre>
+					<code>
 var a = 1;
-console.log(a++ + ++a);
+console.log(a++ + ++a);		
+					</code>
+				</pre>
 			</div>
 			<div class="col-sm-6">
-
+				Выведет 2. <br>
+				a++ сначала вернет 1 потом увеличит на 1<br>
+				++a сначала увеличит на 1 и вернет 3<br>
+				1 + 3 = 4
 			</div>
 		</div>
 
@@ -378,7 +506,7 @@ console.log(a++ + ++a);
 				Как в javascript рапарсить json?
 			</div>
 			<div class="col-sm-6">
-
+				JSON.parse()
 			</div>
 		</div>
 
@@ -388,7 +516,11 @@ console.log(a++ + ++a);
 				Приведите пример кода, который преобразует число (может быть как числового типа, так и строка) в строку, оставляя после запятой 2 знака, заменяя разделитель "." на ",", вставляет пробел после каждых 3-х чисел до запятой (тысяча, миллион, ...)
 			</div>
 			<div class="col-sm-6">
-
+				<pre>
+					<code>
+parseFloat('11321321.2132').toFixed(2).replace('.', ',').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+					</code>
+				</pre>
 			</div>
 		</div>
 
