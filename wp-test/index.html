@@ -137,8 +137,8 @@ echo str_get_floats($str); // 3/3.5/5
 				Singleton,
 				Посредник,
 				Observer,
-				OOP,
-				MVC
+				Decorator,
+				Фабрика
 			</div>
 		</div>
 
@@ -164,20 +164,20 @@ echo str_get_floats($str); // 3/3.5/5
 					<code>
 class BooksController
 {
-        /**
-         * @param  string $authorName
-         * @return void
-     */
-        public function getAuthorBooksAction($authorName)
-        {
-                $db = new \PDO(PDO_DSN, PDO_USER, PDO_PASSWORD);
-                $books = $db->query('SELECT * FROM books WHERE author_name = ' . $authorName)->fetchAll();
+		/**
+		 * @param  string $authorName
+		 * @return void
+	 */
+		public function getAuthorBooksAction($authorName)
+		{
+				$db = new \PDO(PDO_DSN, PDO_USER, PDO_PASSWORD);
+				$books = $db->query('SELECT * FROM books WHERE author_name = ' . $authorName)->fetchAll();
  
-                foreach ($books as $book) {
-                        echo '&lt;h1&gt;' . $book['name'] . '&lt;/h1&gt;';
-                        echo '&lt;p&gt;' . $book['description'] . '&lt;/p&gt;';
-                }
-        }
+				foreach ($books as $book) {
+						echo '&lt;h1&gt;' . $book['name'] . '&lt;/h1&gt;';
+						echo '&lt;p&gt;' . $book['description'] . '&lt;/p&gt;';
+				}
+		}
 }
 					</code>
 				</pre>
@@ -186,12 +186,12 @@ class BooksController
 				Так как это контроллер то используется паттерн MVC. Это означает, что подключение и запрос к базе данных должен быть скрыт в методах модели(в данном случае <b>Book()</b>). А верстка должна находится в файлах представлений, а в контроллере только вызываться нужный файл и передаваться в него данные.
 				<pre>
 					<code>
-    public function getAuthorBooksAction($authorName)
-    {
-            $books = Book::where('author_name', $authorName)->get();
+	public function getAuthorBooksAction($authorName)
+	{
+			$books = Book::where('author_name', $authorName)->get();
 
-            return view('books.index', ['books => $books']);
-    }
+			return view('books.index', ['books => $books']);
+	}
 					</code>
 				</pre>
 			</div>
@@ -212,14 +212,14 @@ $str = '{Я помню|Не помню|Какое} чудное {мгновен�
 function do_choice($str = '')
 {
 	$line = preg_replace_callback(
-        '/{(.*)}/U',
-        function ($matches) {
-        	$choice = explode('|', $matches[1]);
-        	return $choice[array_rand($choice)];
-        },
-        $str
-    );
-    return $line;
+		'/{(.*)}/U',
+		function ($matches) {
+			$choice = explode('|', $matches[1]);
+			return $choice[array_rand($choice)];
+		},
+		$str
+	);
+	return $line;
 
 }
 
@@ -238,18 +238,18 @@ echo do_choice($str);
 // Не менять
 interface MultiplierInterface
 {
-    // Не менять
-    public function multiply($x, $y);   
+	// Не менять
+	public function multiply($x, $y);   
 }
  
 // Не менять
 final class Multiplier implements MultiplierInterface
 {
-    // Не менять
-    public function multiply($x, $y)
-    {
-        return $x * $y;
-    }
+	// Не менять
+	public function multiply($x, $y)
+	{
+		return $x * $y;
+	}
 }
  
 $multiplier = new Multiplier();
@@ -260,7 +260,49 @@ echo $multiplier->multiply(2, -5);
 				</pre>
 			</div>
 			<div class="col-sm-6">
+				Используем декоратор
+				<pre>
+					<code>
 
+// Не менять
+interface MultiplierInterface
+{
+	// Не менять
+	public function multiply($x, $y);   
+}
+ 
+// Не менять
+final class Multiplier implements MultiplierInterface
+{
+	// Не менять
+	public function multiply($x, $y)
+	{
+		return $x * $y;
+	}
+}
+
+// Декоратор
+class MyMultiplierDecorator 
+{
+	function __construct($object)
+	{
+		$this->object = $object;
+	}
+
+	public function multiply($x, $y)
+	{
+		// передаем модули чисел
+		return $this->object->multiply(abs($x), abs($y));
+	}
+}
+
+// обернем new Multiplier() в созданный декоратор
+$multiplier = new MyMultiplierDecorator(new Multiplier());
+ 
+// Не менять
+echo $multiplier->multiply(2, -5);	
+					</code>
+				</pre>
 			</div>
 		</div>
 
@@ -530,7 +572,7 @@ parseFloat('11321321.2132').toFixed(2).replace('.', ',').replace(/(\d)(?=(\d\d\d
 				Объяснить что такое MVC (HMVC) / MVVM. Есть ли разница между MVC и MVVM? Если да, то в чём?
 			</div>
 			<div class="col-sm-6">
-
+				Не сталкивался с MVVM. Знаю что этот паттерн применяется в Angular.
 			</div>
 		</div>
 
