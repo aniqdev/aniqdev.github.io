@@ -16,25 +16,25 @@
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 font-weight-bold">#</div>
-			<div class="col-sm-5 font-weight-bold">Question</div>
-			<div class="col-sm-6 font-weight-bold">Answer</div>
+			<div class="col-md-1 font-weight-bold">#</div>
+			<div class="col-md-5 font-weight-bold">Question</div>
+			<div class="col-md-6 font-weight-bold">Answer</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">1.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">1.</div>
+			<div class="col-md-5">
 				Как в PHP обработать данные, поступившие от клиента, преобразовав все html символы с спецсимволы, убрав пробелы с начала и конца строки, экранировав все спецсимволы?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Убрать пробелы с начала и конца строки можно с помощью функции trim(). <br>
 				преобразовать все html символы с спецсимволы: htmlspecialchars() либо htmlentities().
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">2.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">2.</div>
+			<div class="col-md-5">
 				Что выведет следующий код и почему:
 				<pre>
 					<code>
@@ -51,15 +51,15 @@
 					</code>
 				</pre>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Выведет: 2. Так как переменная $a передается в someFunc2 по ссылке и каждый вызов <b>someFunc2($a)</b> увеличивает $a на единицу. <br>
 				Вызов <b>someFunc1($a)</b> не изменяет внешнюю переменную <b>$a</b> так как она передается в функцию по значению.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">3.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">3.</div>
+			<div class="col-md-5">
 				Что выведет следующий код и почему:
 				<pre>
 					<code>
@@ -76,7 +76,7 @@
 					</code>
 				</pre>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Выведет: 29. <br>
 				вызов <b>someFunc1($a)</b> увеличит свойство prop на единицу у объекта <b>$a</b> так как объекты передаются внутрь функции по ссылке.
 				а <b>someFunc1(clone($a))</b> работает с копией объекта <b>$a</b> и не повлияет на оригинал
@@ -84,32 +84,32 @@
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">4.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">4.</div>
+			<div class="col-md-5">
 				Чем отличается конструктор от обычного метода?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Конструктор - это один из магических методов класса. Он вызывается во время создания объекта и получает в качестве парметров то что предано при вызове new. <b>$a = new A($param1, $param2, ...)</b>
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">5.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">5.</div>
+			<div class="col-md-5">
 				Чем отличается процедурный подход к программированию от объектно ориентированного? Чем отличается объект от класса?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Процедурный подход предпологает использования функция, а объектно ориентированный - это использование классов и объектов. <br>
 				Объект - это экземпляр класса. На основе класса может может быть создано сколько угодно объектов.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">6.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">6.</div>
+			<div class="col-md-5">
 				Напишите код, который из произвольной строки оставит только набор чисел (числа могут быть дробными), если их будет несколько в строке - они будут разделены разделителем "/"
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<pre>
 					<code>
 $str = 'f.f3 3.5f5.s';
@@ -129,11 +129,11 @@ echo str_get_floats($str); // 3/3.5/5
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">7.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">7.</div>
+			<div class="col-md-5">
 				С какими паттернами программирования вы работали?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Singleton,
 				Посредник,
 				Observer,
@@ -143,11 +143,11 @@ echo str_get_floats($str); // 3/3.5/5
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">8.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">8.</div>
+			<div class="col-md-5">
 				Работали ли в с MVC для php? Если да - опишите в кратце в чем по вашему заключается суть такого подхода.
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Этот паттерн используется во всех популярных фреймворках. Я работал с ним в laravel. <br>
 				Суть заключается в разделении кода на модели, представления и контроллеры. <br>
 				Представления содержат все верстку. <br>
@@ -157,8 +157,8 @@ echo str_get_floats($str); // 3/3.5/5
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">9.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">9.</div>
+			<div class="col-md-5">
 				Какие проблемы могут быть с этим контроллером? http://pastebin.com/Gx6gvLkE
 				<pre>
 					<code>
@@ -182,7 +182,7 @@ class BooksController
 					</code>
 				</pre>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Так как это контроллер то используется паттерн MVC. Это означает, что подключение и запрос к базе данных должен быть скрыт в методах модели(в данном случае <b>Book()</b>). А верстка должна находится в файлах представлений, а в контроллере только вызываться нужный файл и передаваться в него данные.
 				<pre>
 					<code>
@@ -198,13 +198,13 @@ class BooksController
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">10.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">10.</div>
+			<div class="col-md-5">
 				Написать функцию, которая получает на вход строку вида: <br>
 				{Я помню|Не помню|Какое} чудное {мгновенье|затменье|творенье} <br>
 				И возвращает случайное слово из фигурных скобок
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<pre>
 					<code>
 $str = '{Я помню|Не помню|Какое} чудное {мгновенье|затменье|творенье}.';
@@ -230,8 +230,8 @@ echo do_choice($str);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">11.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">11.</div>
+			<div class="col-md-5">
 				Есть класс, который умножает 2 числа. Как сделать так, чтоб он умножал модули чисел, при этом не изменяя код класса, интерфейса и строки с выводом результата. Т.е. вызов echo $multiplier->multiply(2, -5); должен вывести 10. http://pastebin.com/ZQDn5gAC
 				<pre>
 					<code>
@@ -259,7 +259,7 @@ echo $multiplier->multiply(2, -5);
 					</code>
 				</pre>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Используем декоратор
 				<pre>
 					<code>
@@ -307,11 +307,11 @@ echo $multiplier->multiply(2, -5);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">12.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">12.</div>
+			<div class="col-md-5">
 				Есть 2 таблицы: t1 {t1_id, t1_name}, t2 {t2_id, t1_id, t2_name}. Предоставьте 3 варианта запросов выборки данных из обоих таблиц, для которых t1.t1_id = t2.t1_id, и 3 варианта запросов выборки данных для которых t1.t1_id != t2.t1_id
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<pre>
 					<code>	
 -- данные из двух таблиц где t1.t1_id = t2.t1_id
@@ -356,11 +356,11 @@ SELECT * FROM t2 WHERE NOT EXISTS (SELECT 1 FROM t1 WHERE t1.t1_id = t2.t1_id);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">13.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">13.</div>
+			<div class="col-md-5">
 				Предложите структуру базы данных для хранения книг, у которых есть названия, цена, описания, автор (авторы), категория (категории)
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Три таблицы для книг, авторов и категорий <br>
 				<code>
 				books <br>
@@ -391,11 +391,11 @@ SELECT * FROM t2 WHERE NOT EXISTS (SELECT 1 FROM t1 WHERE t1.t1_id = t2.t1_id);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">14.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">14.</div>
+			<div class="col-md-5">
 				Для чего используют индексацию в mysql? Какие минусы индексации? Когда ее не стоит использовать?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Поиск по индексированному полю происходит гораздо быстрее. <br>
 				Но минус в том что добавление и обновление данных происходит дольше так как необходимо каждый раз обновлять данные индекса. <br>
 				Индексы не стоит использовать если данные в приложении часто изменяются или добавляются. 
@@ -403,11 +403,11 @@ SELECT * FROM t2 WHERE NOT EXISTS (SELECT 1 FROM t1 WHERE t1.t1_id = t2.t1_id);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">15.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">15.</div>
+			<div class="col-md-5">
 				Какие методы оптимизации баз данных вы знаете (использовали)?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<ul>
 					<li>Нормализация базы данных</li>
 					<li>Добавление необходимых индексов</li>
@@ -421,31 +421,31 @@ SELECT * FROM t2 WHERE NOT EXISTS (SELECT 1 FROM t1 WHERE t1.t1_id = t2.t1_id);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">16.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">16.</div>
+			<div class="col-md-5">
 				Приведите пример mysql запроса который вернет данные из таблицы с наибольшим индексом, не используя при это MAX()
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<code>SELECT * FROM users ORDER BY age DESC LIMIT 1</code>
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">17.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">17.</div>
+			<div class="col-md-5">
 				Как избежать дублирования данных в текстовом поле при вставке в mysql таблицу?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Добавить UNIQUE INDEX к этому поля. <br> В таком случае MySQL выдаст ошибку при попытке вставить уже существующее значение.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">18.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">18.</div>
+			<div class="col-md-5">
 				Как создать объект в javascript? Как создать методы для объекта?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<pre>
 					<code>		
 const obj1 = {
@@ -474,11 +474,11 @@ const obj4 = new MyClass();
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">19.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">19.</div>
+			<div class="col-md-5">
 				Как на javascript создать на страничке html форму, с одним текстовым полем и одной кнопкой submit?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<div id="root"></div>
 				<pre>
 					<code>
@@ -504,8 +504,8 @@ document.getElementById('form_root').appendChild(form);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">20.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">20.</div>
+			<div class="col-md-5">
 				Что выведет код и почему:
 				<pre>
 					<code>
@@ -518,14 +518,14 @@ console.log(a.prop);
 					</code>
 				</pre>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Выведет 2. Так как объекты передаются внутрь функции по ссылке.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">21.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">21.</div>
+			<div class="col-md-5">
 				Что выведет код и почему:
 				<pre>
 					<code>
@@ -534,7 +534,7 @@ console.log(a++ + ++a);
 					</code>
 				</pre>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Выведет 2. <br>
 				a++ сначала вернет 1 потом увеличит на 1<br>
 				++a сначала увеличит на 1 и вернет 3<br>
@@ -543,21 +543,21 @@ console.log(a++ + ++a);
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">22.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">22.</div>
+			<div class="col-md-5">
 				Как в javascript рапарсить json?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				JSON.parse()
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">23.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">23.</div>
+			<div class="col-md-5">
 				Приведите пример кода, который преобразует число (может быть как числового типа, так и строка) в строку, оставляя после запятой 2 знака, заменяя разделитель "." на ",", вставляет пробел после каждых 3-х чисел до запятой (тысяча, миллион, ...)
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<pre>
 					<code>
 parseFloat('11321321.2132').toFixed(2).replace('.', ',').replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
@@ -567,41 +567,41 @@ parseFloat('11321321.2132').toFixed(2).replace('.', ',').replace(/(\d)(?=(\d\d\d
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">24.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">24.</div>
+			<div class="col-md-5">
 				Объяснить что такое MVC (HMVC) / MVVM. Есть ли разница между MVC и MVVM? Если да, то в чём?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Не сталкивался с MVVM. Знаю что этот паттерн применяется в Angular.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">25.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">25.</div>
+			<div class="col-md-5">
 				Зачем нужны интерфейсы классов?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Интерфейс содержит список методов которые необходимо реализовать в наследуемом классе.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">26.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">26.</div>
+			<div class="col-md-5">
 				Что такое декоратор?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Паттерн проектирования. Используется для динамического расширения функциональности объекта. Является гибкой альтернативой наследованию.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">27.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">27.</div>
+			<div class="col-md-5">
 				Что такое Dependency Injection, в чём его суть? Плюсы и минусы
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Это стиль настройки объекта, при котором поля объекта задаются внешней сущностью. Другими словами, объекты настраиваются внешними объектами <br>
 				Пример из User контроллера laravel:
 				<pre>
@@ -616,32 +616,32 @@ public function update(Request $request, User $user)
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">29.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">29.</div>
+			<div class="col-md-5">
 				Что такое DRY?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				DRY — don’t repeat yourself / не повторяйте себя <br>
 				Принцип программирования при котором следует избегать повторяющихся участков кода.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">30.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">30.</div>
+			<div class="col-md-5">
 				Что такое PSR?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Стандарты по написанию кода в php. Широко применются разработчиками, но носят рекомендательный характер.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">31.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">31.</div>
+			<div class="col-md-5">
 				Что такое DTO?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Data Transfer Object - это объект, который используется для инкапсуляции данных и отправки их из одной подсистемы приложения в другую. Пример:
 				<pre>
 					<code>
@@ -653,23 +653,23 @@ $user->notify(new InvoicePaid($invoice));
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">32.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">32.</div>
+			<div class="col-md-5">
 				Сколько примерно времени у Вас займет написание простой html формы (5 полей), которая отправляет данные используя ajax на сервер, на php данные обрабатываются и вставляются в базу, ответ от сервера обрабатывает javascript?
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Если делать на скорость, то минут 30. <br>
 				Если на качество (дизайн, валидация) то пара часов.
 			</div>
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">33.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">33.</div>
+			<div class="col-md-5">
 				Есть ли опыт работы с WordPress. <br>
 				Если есть, распишите подробно.
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				Начинал изучать веб-разработку с верстки шаблонов и натяжки на WordPress. <br>
 				Устанавливал и настраивал плагины. <br>
 				<p>
@@ -687,11 +687,11 @@ $user->notify(new InvoicePaid($invoice));
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">34.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">34.</div>
+			<div class="col-md-5">
 				Приведите список проектов, над которыми вы работали, и причины по которым с них ушли.
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<p>
 					Я занимаюсь фрилансом и это в основном проектная работа. <br>
 					Сделал задачу пошел на следующий проект.
@@ -711,11 +711,11 @@ $user->notify(new InvoicePaid($invoice));
 		</div>
 
 		<div class="row mb-5">
-			<div class="col-sm-1 border-bottom list-num">35.</div>
-			<div class="col-sm-5">
+			<div class="col-md-1 border-bottom list-num">35.</div>
+			<div class="col-md-5">
 				Пришлите пару примеров своего кода
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				GitHub: <a href="https://github.com/aniqdev">https://github.com/aniqdev</a>
 			</div>
 		</div>
