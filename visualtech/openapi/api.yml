@@ -19,17 +19,75 @@ paths:
   /auth/login:
     $ref: "./paths/login.yaml#/paths/loginRoute"
        
-  /user/myBookings:
-    $ref: ./paths/myBookings.yaml#/paths/myBookings
+  /books:
+    get:
+      description: 'get books list'
+      parameters: 
+        - in: query
+          name: offset
+          description: 'offset of the records starts from 0'
+          schema:
+            type: integer
+            example: 50   
+        - in: query
+          name: limit
+          description: 'limit of the records 1 - 100'
+          schema:
+            type: integer
+            example: 50   
+      tags: 
+        -  Books
+      responses: 
+        200: 
+          description: 'Success'
+          content: 
+            application/json: 
+              schema: 
+                properties: 
+                  books:
+                    type: array
+                    items: 
+                      type: object
+                      properties: 
+                        id:
+                          type: integer
+                          example: 1
+                        title:
+                          type: string
+                          example: 'Consequatur mollitia voluptatem eos ipsum'
+                        authors:
+                          type: array
+                          items: 
+                            type: object
+                            properties: 
+                              id:
+                                type: integer
+                                example: 5
+                              name:
+                                type: string
+                                example: 'Clark Parker'
+                        publisher:
+                          type: object
+                          properties: 
+                            id:
+                              type: integer
+                              example: 10
+                            name:
+                              type: string
+                              example: 'Fisherfort'
+      
 
-  /blocks/free:
-    $ref: ./paths/getFreeBlocks.yaml#/paths/getFreeBlocks   
+  # /books/{id}:
+  #   $ref: ./paths/getBookInfo.yaml#/paths/getBookInfo   
     
-  /blocks/calculate:
-    $ref: ./paths/calculateBlocks.yaml#/paths/calculateBlocks
+  # /books/{ido}:
+  #   $ref: ./paths/createBook.yaml#/paths/createBook
 
-  /blocks/book:
-    $ref: "./paths/bookBlocks.yaml#/paths/bookBlocks"
+  # /books/book:
+  #   $ref: "./paths/updateBook.yaml#/paths/updateBook"
+
+  # /books/books:
+  #   $ref: "./paths/deleteBook.yaml#/paths/deleteBook"
 
 
 components:
