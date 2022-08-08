@@ -24,7 +24,17 @@ paths:
       summary: Get the full list of books
       description: Get the full list of books
       operationId: getBooks
-      parameters: []
+      parameters:
+        - name: offset
+          description: from 0 to books count
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          description: 1 - 100
+          in: query
+          schema:
+            type: integer
       responses:
         200:
           description: 'Returns the entire list of books'
@@ -65,7 +75,7 @@ paths:
         - books
       summary: Book Details
       description: Book Details
-      operationId: getBooksId
+      operationId: getBookDetails
       requestBody: 
         content: 
           application/json: 
