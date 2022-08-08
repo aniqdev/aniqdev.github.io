@@ -3,8 +3,8 @@ openapi: 3.0.1
 
 info:
   version: 1.0.0
-  title: 'Web practice API'
-  description: 'Desc'
+  title: 'Books catalog API'
+  description: 'Books catalog API'
   license: 
     name: ''
     url: 's'
@@ -16,12 +16,14 @@ servers:
 
 
 paths:
-  /auth/login:
-    $ref: "./paths/login.yaml#/paths/loginRoute"
+  # /auth/login:
+  #   $ref: "./paths/login.yaml#/paths/loginRoute"
        
-  /books:
+  /books_:
     get:
+      operationId: getBookList
       description: 'get books list'
+      summary: 'book list'
       parameters: 
         - in: query
           name: offset
@@ -75,7 +77,208 @@ paths:
                             name:
                               type: string
                               example: 'Fisherfort'
-      
+
+  /books:
+    get:
+      tags:
+        - books
+      summary: Get the full list of books
+      description: Get the full list of books
+      operationId: getBooks
+      parameters: []
+      responses:
+        200:
+          description: 'Returns the entire list of books'
+          content:
+            application/json: 
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/Books'
+    post:
+      tags:
+        - books
+      summary: Used to add a new book
+      description: Used to add a new book
+      operationId: postBooks
+      requestBody: 
+        content: 
+          application/json: 
+            schema: 
+              $ref: '#/definitions/BookEdit'
+      responses:
+        '201':
+          description: You successefully added a book
+          content: 
+            application/json: 
+              schema:
+                $ref: '#/definitions/Book'
+        '400':
+          description: There were errors validating your book
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/definitions/Error'
+                
+  '/books/{id}':
+    get:
+      tags:
+        - books
+      summary: Book Details
+      description: Book Details
+      operationId: getBooksId
+      requestBody: 
+        content: 
+          application/json: 
+            schema: 
+              $ref: '#/definitions/Book'
+        
+      parameters:
+        - name: id
+          in: path
+          description: The id for the book.
+          required: true
+          schema: 
+            type: integer
+            example: 25
+      responses:
+        '200':
+          description: Single Book
+          content: 
+            application/json: 
+              schema:
+                $ref: '#/definitions/Book'
+        '404':
+          description: Nook not found!
+    put:
+      tags:
+        - books
+      summary: Update (replace) a book
+      description: Update (replace) a book
+      operationId: putBooksId
+      parameters:
+        - name: id
+          in: path
+          description: The id for the book you wish to retreive. This is a guid.
+          required: true
+          schema: 
+            type: integer
+            example: 10
+      requestBody: 
+        content: 
+          application/json: 
+            schema: 
+              $ref: '#/definitions/BookEdit'
+      responses:
+        '202':
+          description: Your change has been accepted
+        '400':
+          description: There were errors processing your request
+          content: 
+            application/json: 
+              schema:
+                $ref: '#/definitions/Error'
+    delete:
+      tags:
+        - books
+      summary: Remove a book from the collection
+      description: Remove a book from the collection
+      operationId: deleteBooksId
+      parameters:
+        - name: id
+          in: path
+          description: The id for the book you wish to retreive. This is a guid.
+          required: true
+          schema: 
+            type: integer
+            example: 5
+      responses:
+        202:
+          description: Success
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties: 
+                  message:
+                    type: string
+                    example: Book deleted.
+        404:
+          description: Error
+          content: 
+            application/json: 
+              schema: 
+                type: object
+                properties: 
+                  message:
+                    type: string
+                    example: Book not found!
+definitions:
+  Error_Validation:
+    type: object
+    properties:
+      source:
+        type: string
+      keys:
+        type: array
+        items:
+          type: string
+  Book:
+    type: object
+    required:
+      - author
+      - id
+      - price
+      - title
+    properties:
+      id:
+        type: string
+      author:
+        type: string
+      title:
+        type: string
+  Books:
+    type: object
+    required:
+      - title
+    properties:
+      id:
+        type: string
+      author:
+        type: string
+      title:
+        type: string
+  BookEdit:
+    type: object
+    required:
+      - author
+      - price
+      - title
+    properties:
+      author:
+        type: string
+      title:
+        type: string
+      price:
+        type: number
+        format: double
+  Error:
+    type: object
+    required:
+      - error
+      - message
+      - statusCode
+      - validation
+    properties:
+      message:
+        type: string
+      statusCode:
+        type: integer
+        format: int64
+      error:
+        type: string
+      validation:
+        $ref: '#/definitions/Error_Validation'    
 
   # /books/{id}:
   #   $ref: ./paths/getBookInfo.yaml#/paths/getBookInfo   
@@ -90,18 +293,18 @@ paths:
   #   $ref: "./paths/deleteBook.yaml#/paths/deleteBook"
 
 
-components:
-  headers:
-    Api-Token:
-      description: 'JWT токен'
-      schema:
-        type: string
-        example: "hsiOGFUD8&T867T786t"
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+# components:
+#   headers:
+    # Api-Token:
+    #   description: 'JWT токен'
+    #   schema:
+    #     type: string
+    #     example: "hsiOGFUD8&T867T786t"
+  # securitySchemes:
+  #   bearerAuth:
+  #     type: http
+  #     scheme: bearer
+  #     bearerFormat: JWT
 
-security:
-  - bearerAuth: []
+# security:
+#   - bearerAuth: []
