@@ -25,6 +25,11 @@ paths:
       description: Get the full list of books
       operationId: getBooks
       parameters:
+        - name: Content-Type
+          in: header
+          schema: 
+            type: string
+            default: aplication/json
         - name: offset
           description: from 0 to books count
           in: query
@@ -163,6 +168,11 @@ paths:
                     type: string
                     example: Book not found!
 components: 
+  headers: 
+    Content-Type:
+      schema: 
+        type: string
+        example: application/json
   schemas:
 
     Book:
@@ -217,32 +227,3 @@ components:
       properties:
         message:
           type: string  
-
-  # /books/{id}:
-  #   $ref: ./paths/getBookInfo.yaml#/paths/getBookInfo   
-    
-  # /books/{ido}:
-  #   $ref: ./paths/createBook.yaml#/paths/createBook
-
-  # /books/book:
-  #   $ref: "./paths/updateBook.yaml#/paths/updateBook"
-
-  # /books/books:
-  #   $ref: "./paths/deleteBook.yaml#/paths/deleteBook"
-
-
-# components:
-#   headers:
-    # Api-Token:
-    #   description: 'JWT токен'
-    #   schema:
-    #     type: string
-    #     example: "hsiOGFUD8&T867T786t"
-  # securitySchemes:
-  #   bearerAuth:
-  #     type: http
-  #     scheme: bearer
-  #     bearerFormat: JWT
-
-# security:
-#   - bearerAuth: []
