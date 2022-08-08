@@ -16,67 +16,6 @@ servers:
 
 
 paths:
-  # /auth/login:
-  #   $ref: "./paths/login.yaml#/paths/loginRoute"
-       
-  /books_:
-    get:
-      operationId: getBookList
-      description: 'get books list'
-      summary: 'book list'
-      parameters: 
-        - in: query
-          name: offset
-          description: 'offset of the records starts from 0'
-          schema:
-            type: integer
-            example: 50   
-        - in: query
-          name: limit
-          description: 'limit of the records 1 - 100'
-          schema:
-            type: integer
-            example: 50   
-      tags: 
-        -  Books
-      responses: 
-        200: 
-          description: 'Success'
-          content: 
-            application/json: 
-              schema: 
-                properties: 
-                  books:
-                    type: array
-                    items: 
-                      type: object
-                      properties: 
-                        id:
-                          type: integer
-                          example: 1
-                        title:
-                          type: string
-                          example: 'Consequatur mollitia voluptatem eos ipsum'
-                        authors:
-                          type: array
-                          items: 
-                            type: object
-                            properties: 
-                              id:
-                                type: integer
-                                example: 5
-                              name:
-                                type: string
-                                example: 'Clark Parker'
-                        publisher:
-                          type: object
-                          properties: 
-                            id:
-                              type: integer
-                              example: 10
-                            name:
-                              type: string
-                              example: 'Fisherfort'
 
   /books:
     get:
@@ -94,7 +33,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/definitions/Books'
+                  $ref: '#/components/schemas/Book'
     post:
       tags:
         - books
@@ -105,20 +44,20 @@ paths:
         content: 
           application/json: 
             schema: 
-              $ref: '#/definitions/BookEdit'
+              $ref: '#/components/schemas/BookEdit'
       responses:
         '201':
           description: You successefully added a book
           content: 
             application/json: 
               schema:
-                $ref: '#/definitions/Book'
+                $ref: '#/components/schemas/Book'
         '400':
           description: There were errors validating your book
           content: 
             application/json: 
               schema: 
-                $ref: '#/definitions/Error'
+                $ref: '#/components/schemas/Error'
                 
   '/books/{id}':
     get:
@@ -131,7 +70,7 @@ paths:
         content: 
           application/json: 
             schema: 
-              $ref: '#/definitions/Book'
+              $ref: '#/components/schemas/Book'
         
       parameters:
         - name: id
@@ -147,7 +86,7 @@ paths:
           content: 
             application/json: 
               schema:
-                $ref: '#/definitions/Book'
+                $ref: '#/components/schemas/Book'
         '404':
           description: Nook not found!
     put:
@@ -168,7 +107,7 @@ paths:
         content: 
           application/json: 
             schema: 
-              $ref: '#/definitions/BookEdit'
+              $ref: '#/components/schemas/BookEdit'
       responses:
         '202':
           description: Your change has been accepted
@@ -177,7 +116,7 @@ paths:
           content: 
             application/json: 
               schema:
-                $ref: '#/definitions/Error'
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - books
@@ -213,72 +152,61 @@ paths:
                   message:
                     type: string
                     example: Book not found!
-definitions:
-  Error_Validation:
-    type: object
-    properties:
-      source:
-        type: string
-      keys:
-        type: array
-        items:
+components: 
+  schemas:
+
+    Book:
+      type: object
+      required:
+        - author
+        - id
+        - price
+        - title
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
           type: string
-  Book:
-    type: object
-    required:
-      - author
-      - id
-      - price
-      - title
-    properties:
-      id:
-        type: string
-      author:
-        type: string
-      title:
-        type: string
-  Books:
-    type: object
-    required:
-      - title
-    properties:
-      id:
-        type: string
-      author:
-        type: string
-      title:
-        type: string
-  BookEdit:
-    type: object
-    required:
-      - author
-      - price
-      - title
-    properties:
-      author:
-        type: string
-      title:
-        type: string
-      price:
-        type: number
-        format: double
-  Error:
-    type: object
-    required:
-      - error
-      - message
-      - statusCode
-      - validation
-    properties:
-      message:
-        type: string
-      statusCode:
-        type: integer
-        format: int64
-      error:
-        type: string
-      validation:
-        $ref: '#/definitions/Error_Validation'    
+          example: 'Consequatur mollitia voluptatem eos ipsum'
+        authors:
+          type: array
+          items: 
+            type: object
+            properties: 
+              id:
+                type: integer
+                example: 5
+              name:
+                type: string
+                example: 'Clark Parker'
+        publisher:
+          type: object
+          properties: 
+            id:
+              type: integer
+              example: 10
+            name:
+              type: string
+              example: 'Fisherfort'
+
+    BookEdit:
+      type: object
+      required:
+        - title
+      properties:
+        message:
+          type: string
+          example: 'Book updated.'
+        book:
+          $ref: '#/components/schemas/Book'
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string  
 
   # /books/{id}:
   #   $ref: ./paths/getBookInfo.yaml#/paths/getBookInfo   
