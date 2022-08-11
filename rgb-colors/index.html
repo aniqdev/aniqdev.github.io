@@ -9,6 +9,7 @@
     <style>
         body{
             letter-spacing: 1px;
+            text-shadow: 0 0 5px rgb(122, 122, 122);
         }
     </style>
 </head>
@@ -16,7 +17,6 @@
     
 <div class="container text-center mt-5">
     <h2>RGB Colors</h2>
-    <div class="text-center " id="show_rgb_string">rgb(0,0,0)</div>
     <div class="btn btn-secondary my-3" style="width:100%;" onclick="randomize()">Randomize</div>
     
     <h5 class="text-center mt-3">diapazon</h5>
@@ -24,15 +24,15 @@
 
     <div class="row mt-4">
         <div class="col-md-4">
-            <h5 class="text-center">R</h5>
+            <h5 class="text-center">R <span id="color_R">0</span></h5>
             <input type="range" disabled class="form-range" value="0" id="customRange1" min="0" max="255" step="1">
         </div>
         <div class="col-md-4">
-            <h5 class="text-center">G</h5>
+            <h5 class="text-center">G <span id="color_G">0</span></h5>
             <input type="range" disabled class="form-range" value="0" id="customRange2" min="0" max="255" step="1">
         </div>
         <div class="col-md-4">
-            <h5 class="text-center">B</h5>
+            <h5 class="text-center">B <span id="color_B">0</span></h5>
             <input type="range" disabled class="form-range" value="0" id="customRange3" min="0" max="255" step="1">
         </div>
     </div>
@@ -75,8 +75,13 @@
         random_B_2 = getRandom255()
         
         customRange1.value = random_R_1
+        color_R.innerHTML = customRange1.value
+
         customRange2.value = random_G_1
+        color_G.innerHTML = customRange2.value
+
         customRange3.value = random_B_1
+        color_B.innerHTML = customRange3.value
 
         var left_color = `rgb(${random_R_1},${random_G_1},${random_B_1})`
         var right_color = `rgb(${random_R_2},${random_G_2},${random_B_2})`
@@ -93,12 +98,15 @@
 
         var customRange1_value = random_R_1 - ((random_R_1 - random_R_2) / 1000 * value)
         customRange1.value = customRange1_value
+        color_R.innerHTML = customRange1.value
         
         var customRange2_value = random_G_1 - ((random_G_1 - random_G_2) / 1000 * value)
         customRange2.value = customRange2_value
+        color_G.innerHTML = customRange2.value
         
         var customRange3_value = random_B_1 - ((random_B_1 - random_B_2) / 1000 * value)
         customRange3.value = customRange3_value
+        color_B.innerHTML = customRange3.value
 
         bg_three.style.background = bg_three.innerHTML = `rgb(${customRange1.value},${customRange2.value},${customRange3.value})`
     }
